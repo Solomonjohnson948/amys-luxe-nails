@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Successful</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<section class="success-page">
+
+    <div class="success-card">
+
+        <p class="tagline">Booking Submitted</p>
+
+        <h1>Appointment Reserved</h1>
+
+        <p>Your booking request has been received successfully.</p>
+
+        <p><strong>Booking ID:</strong> {{ appointment.booking_id }}</p>
+
+        <p><strong>Amount:</strong> ₦{{ appointment.amount }}</p>
+
+        <p><strong>Payment:</strong> {{ appointment.payment_status }}</p>
+
+        <p><strong>Status:</strong> {{ appointment.status }}</p>
+
+        <br>
+
+        <a href="{% url 'track' %}" class="btn">
+            Track Booking
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>

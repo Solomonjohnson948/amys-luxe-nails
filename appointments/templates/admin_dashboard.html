@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Salon Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<section class="dashboard-page">
+
+    <div class="dashboard-header">
+        <div>
+            <p class="tagline">Amy's Luxe Nails</p>
+            <h1>Salon Dashboard</h1>
+        </div>
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <h2>{{ total_bookings }}</h2>
+            <p>Total Bookings</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>{{ pending }}</h2>
+            <p>Pending</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>{{ approved }}</h2>
+            <p>Approved</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>{{ completed }}</h2>
+            <p>Completed</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>{{ cancelled }}</h2>
+            <p>Cancelled</p>
+        </div>
+
+    </div>
+
+    <!-- Booking Table -->
+
+    <table class="booking-table">
+
+        <thead>
+
+            <tr>
+                <th>Booking ID</th>
+                <th>Customer</th>
+                <th>Service</th>
+                <th>Amount</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for appointment in appointments %}
+
+            <tr>
+
+                <td>{{ appointment.booking_id }}</td>
+
+                <td>{{ appointment.customer_name }}</td>
+
+                <td>{{ appointment.service }}</td>
+
+                <td>₦{{ appointment.amount }}</td>
+
+                <td>{{ appointment.payment_status }}</td>
+
+                <td>
+
+                    {% if appointment.status == "Pending" %}
+
+                        <span class="status pending">
+                            Pending
+                        </span>
+
+                    {% elif appointment.status == "Approved" %}
+
+                        <span class="status approved">
+                            Approved
+                        </span>
+
+                    {% elif appointment.status == "Completed" %}
+
+                        <span class="status completed">
+                            Completed
+                        </span>
+
+                    {% else %}
+
+                        <span class="status cancelled">
+                            Cancelled
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>{{ appointment.date }}</td>
+
+                <td>{{ appointment.time }}</td>
+
+                <td class="action-buttons">
+
+                    <a href="{% url 'approve_booking' appointment.id %}"
+                       class="approve-btn">
+                        ✓ Approve
+                    </a>
+
+                    <a href="{% url 'complete_booking' appointment.id %}"
+                       class="complete-btn">
+                        ✔ Complete
+                    </a>
+
+                    <a href="{% url 'cancel_booking' appointment.id %}"
+                       class="cancel-btn">
+                        ✕ Cancel
+                    </a>
+
+                </td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+                <td colspan="9" style="text-align:center;">
+                    No bookings yet.
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</section>
+
+</body>
+</html>

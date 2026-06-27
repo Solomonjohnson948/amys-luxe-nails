@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Summary | Amy's Luxe Nails</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<section class="success-page">
+
+    <div class="success-card">
+
+        <p class="tagline">Payment Summary</p>
+
+        <h1>Confirm Your Appointment</h1>
+
+        <p>Please review your appointment before continuing.</p>
+
+        <hr>
+
+        <p><strong>Booking ID:</strong> {{ appointment.booking_id }}</p>
+
+        <p><strong>Customer:</strong> {{ appointment.customer_name }}</p>
+
+        <p><strong>Service:</strong> {{ appointment.service }}</p>
+
+        <p><strong>Date:</strong> {{ appointment.date }}</p>
+
+        <p><strong>Time:</strong> {{ appointment.time }}</p>
+
+        <hr>
+
+        <h2 style="color:#b83264;">
+            Total: ₦{{ appointment.amount }}
+        </h2>
+
+        <p>
+            Payment Status:
+            <strong>{{ appointment.payment_status }}</strong>
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <button type="submit" class="btn">
+                Pay Now
+            </button>
+        </form>
+
+    </div>
+
+</section>
+
+</body>
+</html>

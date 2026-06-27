@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amy's Luxe Nails</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<nav>
+    <h2>Amy's Luxe Nails 💅</h2>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#services">Services</a>
+        <a href="{% url 'book' %}" class="nav-btn">Book Appointment</a>
+        <a href="{% url 'track' %}">Track Booking</a>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <div class="hero-text">
+        <p class="tagline">Luxury Nail Care Studio</p>
+
+        <h1>Book your manicure and pedicure with style.</h1>
+
+        <p class="desc">
+            No more manual appointment books, lost records, or scheduling conflicts.
+            Amy's Luxe Nails makes booking smooth, elegant, and stress-free.
+        </p>
+
+        <a href="{% url 'book' %}" class="btn">Book Appointment</a>
+    </div>
+
+    <div class="hero-card">
+        <h3>10★ Experience</h3>
+        <p>Manicure • Pedicure • Gel Polish • Nail Art</p>
+    </div>
+
+</section>
+
+<section class="services" id="services">
+
+    <p class="tagline">Our Services</p>
+
+    <h2>Choose your perfect nail glow</h2>
+
+    <div class="service-grid">
+
+        <div class="service-card">
+            <span>💅</span>
+            <h3>Classic Manicure</h3>
+            <p>
+                Clean shaping, cuticle care, premium polish,
+                and a flawless finish for everyday elegance.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <span>🌸</span>
+            <h3>Luxury Pedicure</h3>
+            <p>
+                Relaxing spa treatment with exfoliation,
+                massage, hydration, and beautiful finishing polish.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <span>✨</span>
+            <h3>Gel Polish</h3>
+            <p>
+                Long-lasting glossy gel polish that stays vibrant
+                and chip-free for weeks.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <span>🎀</span>
+            <h3>Nail Art</h3>
+            <p>
+                Custom artistic nail designs perfect for birthdays,
+                weddings, parties, and special occasions.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="why">
+
+    <div class="why-text">
+        <p class="tagline">Why Choose Amy's Luxe Nails</p>
+
+        <h2>Luxury service without the scheduling stress.</h2>
+
+        <p>
+            Our appointment system replaces handwritten appointment books
+            with a modern booking experience. Clients reserve appointments
+            online while the salon avoids double bookings and lost records.
+        </p>
+    </div>
+
+    <div class="why-card">
+        <h3>What You'll Enjoy</h3>
+
+        <ul>
+            <li>✔ Easy online booking</li>
+            <li>✔ No appointment conflicts</li>
+            <li>✔ Secure customer records</li>
+            <li>✔ Fast appointment approval</li>
+        </ul>
+    </div>
+
+</section>
+
+<section class="reviews">
+
+    <p class="tagline">Testimonials</p>
+
+    <h2>What Our Clients Say</h2>
+
+    <div class="review-grid">
+
+        <div class="review-card">
+            <h3>★★★★★</h3>
+            <p>
+                "Booking my appointment took less than two minutes.
+                The service was exceptional."
+            </p>
+            <strong>— Jessica M.</strong>
+        </div>
+
+        <div class="review-card">
+            <h3>★★★★★</h3>
+            <p>
+                "The salon feels premium and the online booking
+                made everything so convenient."
+            </p>
+            <strong>— Amaka O.</strong>
+        </div>
+
+        <div class="review-card">
+            <h3>★★★★★</h3>
+            <p>
+                "Beautiful nails, friendly staff,
+                and absolutely no waiting around."
+            </p>
+            <strong>— Bella A.</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+    <h2>Amy's Luxe Nails</h2>
+
+    <p>Luxury manicure and pedicure appointments made simple.</p>
+
+    <p class="footer-small">
+        © 2026 Amy's Luxe Nails. All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>

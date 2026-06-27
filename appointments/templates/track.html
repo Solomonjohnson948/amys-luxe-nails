@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Booking | Amy's Luxe Nails</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<section class="success-page">
+
+    <div class="success-card track-card">
+
+        {% if not appointment %}
+
+            <p class="tagline">Booking Tracker</p>
+
+            <h1>Track Your Booking</h1>
+
+            <p>Enter your Booking ID to check your appointment status.</p>
+
+            <form method="POST" class="track-form">
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="booking_id"
+                    placeholder="Example: ALN-A2EF825D"
+                    required
+                >
+
+                <button type="submit" class="booking-btn">
+                    Track Booking
+                </button>
+
+            </form>
+
+            {% if error %}
+                <p class="error-text">
+                    {{ error }}
+                </p>
+            {% endif %}
+
+        {% else %}
+
+            <p class="tagline">Booking Found ✓</p>
+
+            <h1>{{ appointment.customer_name }}</h1>
+
+            <div class="tracking-result">
+
+                <div class="track-row">
+                    <span>Booking ID</span>
+                    <strong>{{ appointment.booking_id }}</strong>
+                </div>
+
+                <div class="track-row">
+                    <span>Service</span>
+                    <strong>{{ appointment.service }}</strong>
+                </div>
+
+                <div class="track-row">
+                    <span>Amount</span>
+                    <strong>₦{{ appointment.amount }}</strong>
+                </div>
+
+                <div class="track-row">
+                    <span>Payment</span>
+                    <strong>{{ appointment.payment_status }}</strong>
+                </div>
+
+                <div class="track-row">
+                    <span>Status</span>
+
+                    <strong class="status-badge">
+                        {{ appointment.status }}
+                    </strong>
+                </div>
+
+                <div class="track-row">
+                    <span>Date</span>
+                    <strong>{{ appointment.date }}</strong>
+                </div>
+
+                <div class="track-row">
+                    <span>Time</span>
+                    <strong>{{ appointment.time }}</strong>
+                </div>
+
+            </div>
+
+            <a href="{% url 'track' %}" class="btn">
+                Track Another Booking
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment | Amy's Luxe Nails</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<section class="booking-page">
+    <div class="booking-card">
+        <p class="tagline">Appointment Booking</p>
+        <h1>Reserve your nail session</h1>
+        <p class="booking-note">Select a service, confirm the amount, then reserve your appointment.</p>
+
+        <form method="POST" class="booking-form">
+            {% csrf_token %}
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    {{ form.customer_name }}
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    {{ form.phone }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="form-group">
+                    <label>Service</label>
+                    {{ form.service }}
+                </div>
+            </div>
+
+            <div class="price-box">
+                Amount to pay: <strong id="service-price">Select a service</strong>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Date</label>
+                    {{ form.date }}
+                </div>
+
+                <div class="form-group">
+                    <label>Time</label>
+                    {{ form.time }}
+                </div>
+            </div>
+
+            <button type="submit" class="booking-btn">
+    Continue to Payment →
+</button>
+
+        </form>
+    </div>
+</section>
+
+<script>
+    const prices = {
+        {% for service in form.fields.service.queryset %}
+            "{{ service.id }}": "₦{{ service.price }}",
+        {% endfor %}
+    };
+
+    const serviceSelect = document.getElementById("id_service");
+    const priceDisplay = document.getElementById("service-price");
+
+    serviceSelect.addEventListener("change", function () {
+        priceDisplay.textContent = prices[this.value] || "Select a service";
+    });
+</script>
+
+</body>
+</html>
