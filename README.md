@@ -69,6 +69,44 @@ http://127.0.0.1:8000/
 * Booking Tracker
 * Salon Admin Dashboard
 
+## 📸 Screenshots
+
+### Home Page
+
+![Home](screenshots/home.png)
+
+---
+
+### Booking Page
+
+![Booking](screenshots/booking.png)
+
+---
+
+### Payment Page
+
+![Payment](screenshots/payment.png)
+
+---
+
+### Booking Success
+
+![Success](screenshots/success.png)
+
+---
+
+### Booking Tracker
+
+![Tracker](screenshots/tracker.png)
+
+---
+
+### Salon Admin Dashboard
+
+![Admin Dashboard](screenshots/admin-dashboard.png)
+![Admin Dashboard](screenshots/admin-dashboard.png%20(2).png)
+![Admin Dashboard](screenshots/admin-dashboard.png%20(3).png)
+
 ## 🔮 Future Improvements
 
 * Online payment integration
